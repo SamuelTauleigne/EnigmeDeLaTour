@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+			<link rel="stylesheet" media="screen" type="text/css" href="towerWebPage.css">
+			<link rel="icon" href="LOGO.png">
+			<title>Escape Game TSE</title>
+			<script type="text/javascript" src="zepto.min.js"></script>
+  			<script type="text/javascript">
+    			function refresh() {
+					  $('#super_pict').load('http://192.168.240.1/arduino/super');
+					  $('#king_pict').load('http://192.168.240.110/arduino/king');
+    			}
+  			</script>
+		</head>
+	<body onload="setInterval(refresh, 500);">
+		<script type="text/javascript">
+				function display(toDisplay, otherDiv1, otherDiv2, tab_displayed, otherTab1, otherTab2)
+				{
+				divToDisplay = document.getElementById(toDisplay);
+				otherDiv1 = document.getElementById(otherDiv1);
+				otherDiv2 = document.getElementById(otherDiv2);
+
+ 				tabOfDisplayed = document.getElementById(tab_displayed);
+ 				otherTab1 = document.getElementById(otherTab1);
+ 				otherTab2 = document.getElementById(otherTab2);
+
+				if (divToDisplay.style.display == 'none'){
+					divToDisplay.style.display = 'block';
+					otherDiv2.style.display = 'none';
+					otherDiv1.style.display = 'none';
+
+					tabOfDisplayed.style.height = '35px';
+					otherTab1.style.height = '30px';
+					otherTab2.style.height = '30px';
+					}
+				}
+		</script>
+
+
+		<div id="begin">
+			<h1 id="title">Énigme de la Tour</h1>
+			<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
+		</div>
+		<p id="introduction_text">Texte explicatif de l'objectif</p>
+		<div id="tabs">
+			<ul>
+				<li><input type="button" class="button" id="Supermarché"value="Supermarché" onclick="display('tab_supermarche', 'tab_king', 'tab_soggy', 'Supermarché', 'King', 'Soggy')"></li>
+				<li><input type="button" class="button" id="King" value="King Kebab" onclick="display('tab_king', 'tab_supermarche', 'tab_soggy', 'King', 'Supermarché', 'Soggy')"></li>
+				<li><input type="button" class="button" id="Soggy" value="Soggy Bottom" onclick="display('tab_soggy', 'tab_king', 'tab_supermarche', 'Soggy', 'Supermarché', 'King')"></li>
+			</ul>
+		</div>
+		<div class="tab_content" id="tab_supermarche" style="display:none;">
+			<p id="text_super"> Rappel de ce qui a été acheté au supermarché</p>
+			<span class="product_pict" id="super_pict"></span>
+		</div>
+		<div class="tab_content" id="tab_king" style="display:none;">
+			<p id="text_king"> Rappel de ce qui a été acheté au King</p>
+			<span class="product_pict" id="king_pict"></span>
+		</div>
+		<div class="tab_content" id="tab_soggy" style="display:none;">
+			<p id="text_soggy"> Rappel de ce qui a été acheté au Soggy</p>
+			<span class="product_pict" id="soggy_pict" src="soda.jpg" alt="Canettes de soda"></span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+#begin {
+	/*background-color: #0470EB;*/
+	background-color: #182949;
+	text-align: center;
+	width: 100%;
+}
+
+
+#title {
+	color: #FFFFFF;
+}
+
+.begin_pict {
+	width: 100px;
+	height: 200px;
+}
+
+#introduction_text {
+	text-align: center;
+}
+
+#tabs{
+	width: 100%;
+	text-align: center;
+}
+
+ul{
+    display: inline;
+    text-align: center;
+    
+    margin-right: 3%;
+    
+}
+
+ul li{
+    display: inline-block;
+    /*border-style: solid;*/
+    width: 30%;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    /*margin-right: 50px;*/
+}
+
+
+#Supermarché{
+	/*border-color: blue;*/
+	background-color: blue;
+	border-color: blue;
+}
+
+#King{
+	/*border-color: red;*/
+	background-color: red;
+	border-color: red;
+}
+
+#Soggy{
+	/*border-color: green;*/
+	background-color: green;
+	border-color: green;
+}
+
+.tab_content{
+	text-align: center;
+	border-style: solid;
+	border-width: 5px;
+}
+
+.product_pict{
+	width : 50%;
+	height: 30%;
+}
+
+#tab_supermarche{
+	border-color: blue;
+}
+
+#tab_king{
+	border-color: red;
+}
+
+#tab_soggy{
+	border-color: green;
+}
+
+.button{
+	color: white;
+	width: 100%;
+	font-size: 20px;
+	
+}
