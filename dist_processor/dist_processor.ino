@@ -10,7 +10,7 @@ const int TRIGGER_PIN = 13;
 const int ECHO_PIN = 12;
 UltraSonicDistanceSensor distanceSensor(TRIGGER_PIN, ECHO_PIN);  // Initialize sensor that uses digital pins TRIGGER and ECHO.
 
-const int DATA_LENGTH = 20;
+const int DATA_LENGTH = 10; // 20
 double data[DATA_LENGTH];
 
 const int BUFF_LENGTH = 5;
@@ -20,6 +20,8 @@ const double SEG1[] = {10.0, 55.0};
 const double SEG2[] = {65.0, 105.0};
 const double SEG3[] = {115.0, 160.0};
 
+String command;
+
 
 void setup () {
   Serial.begin(9600);  // We initialize serial connection so that we could print values from sensor.
@@ -28,14 +30,24 @@ void setup () {
   pinMode(12, INPUT);
   pinMode(13, OUTPUT);
 
-  BridgeClient client = server.accept();
-  client.println("Status: 200");
-  client.println("Access-Control-Allow-Origin: *");
-  client.println("Access-Control-Allow-Methods: GET");
-  client.println("Content-Type: text/html");
-  client.println("Connexion: close");
-  client.println();
-  client.println("NOPE");
+  pinMode(11, INPUT);
+  pinMode(9, INPUT);
+  if (digitalRead(9)*digitalRead(11) == 1) {
+    command = "soggy";
+  }
+  else {
+    if (digitalRead(9) == 1) {
+      command = "king";
+    }
+    else {
+      if (digitalRead(11) == 1) {
+        command = "super";
+      }
+      else {
+        command = "none";
+      }
+    }
+  }
 }
 
 double mean(double tab[]) {
@@ -83,34 +95,6 @@ int segment(double buff[]) {
   return res;
 }
 
-void processDistance(BridgeClient client, int segment) {
-
-  if (client) {
-    String command = client.readString();
-    command.trim();
-
-    if (command == "king") {
-      if (segment == 1) {
-        client.print("Yes");
-      }
-      else {
-        client.print("No");
-      }
-    }
-    else {
-      if (command == "super") {
-        if (segment == 1) {
-          client.print("<img src=\"chips.jpg\" alt=\"Image Chips\">");
-        }
-        else {
-          client.print("<img src=\"soda.jpg\" alt=\"Image Soda\">");
-        }
-      }
-    }
-    client.stop();
-  }
-}
-
 void loop() {
   // Every 500 miliseconds, do a measurement using the sensor and print the distance in centimeters.
   //Serial.println(distanceSensor.measureDistanceCm());
@@ -119,48 +103,89 @@ void loop() {
   }
   for (int i = 0; i < DATA_LENGTH; i++) {
     double data_in = distanceSensor.measureDistanceCm();
-    //    while (data_in < 0) {
-    //      data_in = distanceSensor.measureDistanceCm();
-    //    }
+    while (data_in < 0) {
+      data_in = distanceSensor.measureDistanceCm();
+      Serial.println("Looping");
+    }
     data[i] = data_in;
   }
   buff[BUFF_INDEX] = mean(data);
   BUFF_INDEX++;
   //Serial.println(mean(data));
-  Serial.println(segment(buff));
+  // Serial.println(segment(buff));
 
   BridgeClient client = server.accept();
-  if (client) {
-    String command = client.readString();
-    command.trim();
 
+  if (client) {
     client.println("Status: 200");
     client.println("Access-Control-Allow-Origin: *");
-    client.println("Access-Control-Allow-Methods: GET");
-    client.println("Content-Type: text/html");
-    client.println("Connexion: close");
+    // client.println("Access-Control-Allow-Methods: GET");
+    // client.println("Content-Type: text/html");
+    // client.println("Connexion: close");
     client.println();
 
+    int seg = segment(buff);
     if (command == "king") {
-      if (segment(buff)) {
-        client.print("Yes");
+      if (seg == 1) {
+        client.print("<img class=\"product_pict\" src=\"assiette.jpg\" alt=\"Image Assiette\">");
       }
       else {
-        client.print("No");
+        if (seg == 2) {
+          client.print("<img class=\"product_pict\" src=\"frites.jpg\" alt=\"Image Frites\">");
+        }
+        else {
+          if (seg == 3) {
+            client.print("<img class=\"product_pict\" src=\"maxi_kebab.png\" alt=\"Image Kebab\">");
+          }
+          else {
+            client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
+          }
+        }
       }
     }
     else {
       if (command == "super") {
-        int val = digitalRead(11);
-        if (val) {
-          client.print("<img src=\"chips.jpg\" alt=\"Image Chips\">");
+        if (seg == 1) {
+          client.print("<img class=\"product_pict\" src=\"chips.jpg\" alt=\"Image Chips\">");
         }
         else {
-          client.print("<img src=\"soda.jpg\" alt=\"Image Chips\">");
+          if (seg == 2) {
+            client.print("<img class=\"product_pict\" src=\"pizza.jpg\" alt=\"Image Pizza\">");
+          }
+          else {
+            if (seg == 3) {
+              client.print("<img class=\"product_pict\" src=\"redbull.png\" alt=\"Image Redbull\">");
+            }
+            else {
+              client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
+            }
+          }
+        }
+      }
+      else {
+        if (command == "soggy") {
+          if (seg == 1) {
+            client.print("<img class=\"product_pict\" src=\"coca.jpg\" alt=\"Image Coca\">");
+          }
+          else {
+            if (seg == 2) {
+              client.print("<img class=\"product_pict\" src=\"pinte.jpg\" alt=\"Image Pinte\">");
+            }
+            else {
+              if (seg == 3) {
+                client.print("<img class=\"product_pict\" src=\"saucisson.png\" alt=\"Image Saucisson\">");
+              }
+              else {
+                client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
+              }
+            }
+          }
+        }
+        else {
+          client.print("<h3>Veuillez vérifier les branchements</h3>");
         }
       }
     }
     client.stop();
   }
-  delay(200);
 }
