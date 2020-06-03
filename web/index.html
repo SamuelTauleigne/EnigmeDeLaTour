@@ -1,72 +1,78 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-			<link rel="stylesheet" media="screen" type="text/css" href="towerWebPage.css">
-			<link rel="icon" href="LOGO.png">
-			<title>Escape Game TSE</title>
-			<script type="text/javascript" src="zepto.min.js"></script>
-  			<script type="text/javascript">
-    			function refresh() {
-					  $('#super_pict').load('http://192.168.240.1/arduino/super');
-					  $('#soggy_pict').load('http://192.168.240.133/arduino/soggy');
-					  $('#king_pict').load('http://192.168.240.110/arduino/king');
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" media="screen" type="text/css" href="towerWebPage.css">
+	<link rel="icon" href="LOGO.png">
+	<title>Escape Game TSE</title>
+</head>
+
+<body>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript">
+		function display(toDisplay, otherDiv1, otherDiv2, tab_displayed, otherTab1, otherTab2) {
+
+			divToDisplay = document.getElementById(toDisplay);
+			otherDiv1 = document.getElementById(otherDiv1);
+			otherDiv2 = document.getElementById(otherDiv2);
+
+			tabOfDisplayed = document.getElementById(tab_displayed);
+			otherTab1 = document.getElementById(otherTab1);
+			otherTab2 = document.getElementById(otherTab2);
+
+			if (divToDisplay.style.display == 'none') {
+				divToDisplay.style.display = 'block';
+				otherDiv2.style.display = 'none';
+				otherDiv1.style.display = 'none';
+
+				tabOfDisplayed.style.height = '35px';
+				otherTab1.style.height = '30px';
+				otherTab2.style.height = '30px';
 			}
-  			</script>
-		</head>
-	<body onload="setInterval(refresh, 500);">
-		<script type="text/javascript">
-				function display(toDisplay, otherDiv1, otherDiv2, tab_displayed, otherTab1, otherTab2)
-				{
-				divToDisplay = document.getElementById(toDisplay);
-				otherDiv1 = document.getElementById(otherDiv1);
-				otherDiv2 = document.getElementById(otherDiv2);
-
- 				tabOfDisplayed = document.getElementById(tab_displayed);
- 				otherTab1 = document.getElementById(otherTab1);
- 				otherTab2 = document.getElementById(otherTab2);
-
-				if (divToDisplay.style.display == 'none'){
-					divToDisplay.style.display = 'block';
-					otherDiv2.style.display = 'none';
-					otherDiv1.style.display = 'none';
-
-					tabOfDisplayed.style.height = '35px';
-					otherTab1.style.height = '30px';
-					otherTab2.style.height = '30px';
-					}
-				}
-		</script>
+		}
+		function refresh() {
+			$('#super_pict').load('http://192.168.240.1/arduino/super');
+			$('#soggy_pict').load('http://192.168.240.133/arduino/soggy');
+			$('#king_pict').load('http://192.168.240.110/arduino/king');
+		}
+		setInterval(() => refresh(), 500);
+	</script>
 
 
-		<div id="begin">
-			<h1 id="title">Énigme de la Tour</h1>
-			<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
-		</div>
-		<p id="introduction_text">
-			Bienvenue à l'énigme de la Tour !<br>
-			Hier soir, Théo a acheté deux paquets de chips, un Maxi-Kebab et deux pintes !<br>
-			Cliquez sur le lieu devant lequel vous vous trouvez et placez-vous sur un prix pour faire apparaître l'article correspondant.<br>
-			Combien Théo a-t-il dépensé dans sa soirée ? Bonne chance !
-		</p>
-		<div id="tabs">
-			<ul>
-				<li><input type="button" class="button" id="Supermarché"value="Supermarché" onclick="display('tab_supermarche', 'tab_king', 'tab_soggy', 'Supermarché', 'King', 'Soggy')"></li>
-				<li><input type="button" class="button" id="King" value="King Kebab" onclick="display('tab_king', 'tab_supermarche', 'tab_soggy', 'King', 'Supermarché', 'Soggy')"></li>
-				<li><input type="button" class="button" id="Soggy" value="Soggy Bottom" onclick="display('tab_soggy', 'tab_king', 'tab_supermarche', 'Soggy', 'Supermarché', 'King')"></li>
-			</ul>
-		</div>
-		<div class="tab_content" id="tab_supermarche" style="display:none;">
-			<p id="text_super">Ici, Théo a acheté deux paquets de chips ...</p>
-			<span class="product_pict" id="super_pict">Aucune donnée reçue ...</span>
-		</div>
-		<div class="tab_content" id="tab_king" style="display:none;">
-			<p id="text_king">Ici, Théo a acheté un Maxi-Kebab ...</p>
-			<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span>
-		</div>
-		<div class="tab_content" id="tab_soggy" style="display:none;">
-			<p id="text_soggy">Ici, Théo a payé deux pintes ...</p>
-			<span class="product_pict" id="soggy_pict">Aucune donnée reçue ...</span>
-		</div>
-	</body>
+	<div id="begin">
+		<h1 id="title">Énigme de la Tour</h1>
+		<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
+	</div>
+	<p id="introduction_text">
+		Bienvenue à l'énigme de la Tour !<br>
+		Hier soir, Théo a acheté deux paquets de chips, un Maxi-Kebab et deux pintes !<br>
+		Cliquez sur le lieu devant lequel vous vous trouvez et placez-vous sur un prix pour faire apparaître l'article
+		correspondant.<br>
+		Combien Théo a-t-il dépensé dans sa soirée ? Bonne chance !
+	</p>
+	<div id="tabs">
+		<ul>
+			<li><input type="button" class="button" id="Supermarché" value="Supermarché"
+					onclick="display('tab_supermarche', 'tab_king', 'tab_soggy', 'Supermarché', 'King', 'Soggy')"></li>
+			<li><input type="button" class="button" id="King" value="King Kebab"
+					onclick="display('tab_king', 'tab_supermarche', 'tab_soggy', 'King', 'Supermarché', 'Soggy')"></li>
+			<li><input type="button" class="button" id="Soggy" value="Soggy Bottom"
+					onclick="display('tab_soggy', 'tab_king', 'tab_supermarche', 'Soggy', 'Supermarché', 'King')"></li>
+		</ul>
+	</div>
+	<div class="tab_content" id="tab_supermarche" style="display:none;">
+		<p id="text_super">Ici, Théo a acheté deux paquets de chips ...</p>
+		<span class="product_pict" id="super_pict">Aucune donnée reçue ...</span>
+	</div>
+	<div class="tab_content" id="tab_king" style="display:none;">
+		<p id="text_king">Ici, Théo a acheté un Maxi-Kebab ...</p>
+		<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span>
+	</div>
+	<div class="tab_content" id="tab_soggy" style="display:none;">
+		<p id="text_soggy">Ici, Théo a payé deux pintes ...</p>
+		<span class="product_pict" id="soggy_pict">Aucune donnée reçue ...</span>
+	</div>
+</body>
+
 </html>
