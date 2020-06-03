@@ -22,16 +22,18 @@ const double SEG3[] = {115.0, 160.0};
 
 String command;
 
-
 void setup () {
   Serial.begin(9600);  // We initialize serial connection so that we could print values from sensor.
   Bridge.begin();
+  //server.listenOnLocalhost();
   server.begin();
+  
   pinMode(12, INPUT);
   pinMode(13, OUTPUT);
 
   pinMode(11, INPUT);
   pinMode(9, INPUT);
+  
   if (digitalRead(9)*digitalRead(11) == 1) {
     command = "soggy";
   }
@@ -102,26 +104,29 @@ void loop() {
     BUFF_INDEX = 0;
   }
   for (int i = 0; i < DATA_LENGTH; i++) {
+    Serial.println(i);
     double data_in = distanceSensor.measureDistanceCm();
     while (data_in < 0) {
       data_in = distanceSensor.measureDistanceCm();
-      Serial.println("Looping");
     }
     data[i] = data_in;
   }
   buff[BUFF_INDEX] = mean(data);
   BUFF_INDEX++;
-  //Serial.println(mean(data));
+  Serial.println(mean(data));
   // Serial.println(segment(buff));
 
   BridgeClient client = server.accept();
-
+  
   if (client) {
+//    command = client.readString();
+//    command.trim();
+    
     client.println("Status: 200");
     client.println("Access-Control-Allow-Origin: *");
-    // client.println("Access-Control-Allow-Methods: GET");
-    // client.println("Content-Type: text/html");
-    // client.println("Connexion: close");
+    client.println("Access-Control-Allow-Methods: GET");
+    client.println("Content-Type: text/html");
+    client.println("Connexion: close");
     client.println();
 
     int seg = segment(buff);
@@ -154,7 +159,7 @@ void loop() {
           }
           else {
             if (seg == 3) {
-              client.print("<img class=\"product_pict\" src=\"redbull.png\" alt=\"Image Redbull\">");
+              client.print("<img class=\"product_pict\" src=\"redbull.jpg\" alt=\"Image Redbull\">");
             }
             else {
               client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
@@ -173,7 +178,7 @@ void loop() {
             }
             else {
               if (seg == 3) {
-                client.print("<img class=\"product_pict\" src=\"saucisson.png\" alt=\"Image Saucisson\">");
+                client.print("<img class=\"product_pict\" src=\"saucisson.jpg\" alt=\"Image Saucisson\">");
               }
               else {
                 client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");

@@ -9,8 +9,9 @@
   			<script type="text/javascript">
     			function refresh() {
 					  $('#super_pict').load('http://192.168.240.1/arduino/super');
+					  $('#soggy_pict').load('http://192.168.240.133/arduino/soggy');
 					  $('#king_pict').load('http://192.168.240.110/arduino/king');
-    			}
+			}
   			</script>
 		</head>
 	<body onload="setInterval(refresh, 500);">
@@ -42,7 +43,12 @@
 			<h1 id="title">Énigme de la Tour</h1>
 			<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
 		</div>
-		<p id="introduction_text">Texte explicatif de l'objectif</p>
+		<p id="introduction_text">
+			Bienvenue à l'énigme de la Tour !<br>
+			Hier soir, Théo a acheté deux paquets de chips, un Maxi-Kebab et deux pintes !<br>
+			Cliquez sur le lieu devant lequel vous vous trouvez et placez-vous sur un prix pour faire apparaître l'article correspondant.<br>
+			Combien Théo a-t-il dépensé dans sa soirée ? Bonne chance !
+		</p>
 		<div id="tabs">
 			<ul>
 				<li><input type="button" class="button" id="Supermarché"value="Supermarché" onclick="display('tab_supermarche', 'tab_king', 'tab_soggy', 'Supermarché', 'King', 'Soggy')"></li>
@@ -51,16 +57,16 @@
 			</ul>
 		</div>
 		<div class="tab_content" id="tab_supermarche" style="display:none;">
-			<p id="text_super"> Rappel de ce qui a été acheté au supermarché</p>
-			<span class="product_pict" id="super_pict"></span>
+			<p id="text_super">Ici, Théo a acheté deux paquets de chips ...</p>
+			<span class="product_pict" id="super_pict">Aucune donnée reçue ...</span>
 		</div>
 		<div class="tab_content" id="tab_king" style="display:none;">
-			<p id="text_king"> Rappel de ce qui a été acheté au King</p>
-			<span class="product_pict" id="king_pict"></span>
+			<p id="text_king">Ici, Théo a acheté un Maxi-Kebab ...</p>
+			<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span>
 		</div>
 		<div class="tab_content" id="tab_soggy" style="display:none;">
-			<p id="text_soggy"> Rappel de ce qui a été acheté au Soggy</p>
-			<span class="product_pict" id="soggy_pict" src="soda.jpg" alt="Canettes de soda"></span>
+			<p id="text_soggy">Ici, Théo a payé deux pintes ...</p>
+			<span class="product_pict" id="soggy_pict">Aucune donnée reçue ...</span>
 		</div>
 	</body>
 </html>
