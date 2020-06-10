@@ -132,15 +132,15 @@ void loop() {
     int seg = segment(buff);
     if (command == "king") {
       if (seg == 1) {
-        client.print("<img class=\"product_pict\" src=\"assiette.jpg\" alt=\"Image Assiette\">");
+        client.print("<img class=\"product_pict\" src=\"plate.png\" alt=\"Image Assiette\">");
       }
       else {
         if (seg == 2) {
-          client.print("<img class=\"product_pict\" src=\"frites.jpg\" alt=\"Image Frites\">");
+          client.print("<img class=\"product_pict\" src=\"frites.png\" alt=\"Image Frites\">");
         }
         else {
           if (seg == 3) {
-            client.print("<img class=\"product_pict\" src=\"maxi_kebab.png\" alt=\"Image Kebab\">");
+            client.print("<img class=\"product_pict\" src=\"kebab.png\" alt=\"Image Kebab\">");
           }
           else {
             client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
@@ -151,15 +151,15 @@ void loop() {
     else {
       if (command == "super") {
         if (seg == 1) {
-          client.print("<img class=\"product_pict\" src=\"chips.jpg\" alt=\"Image Chips\">");
+          client.print("<img class=\"product_pict\" src=\"snack.png\" alt=\"Image Chips\">");
         }
         else {
           if (seg == 2) {
-            client.print("<img class=\"product_pict\" src=\"pizza.jpg\" alt=\"Image Pizza\">");
+            client.print("<img class=\"product_pict\" src=\"pizza.png\" alt=\"Image Pizza\">");
           }
           else {
             if (seg == 3) {
-              client.print("<img class=\"product_pict\" src=\"redbull.jpg\" alt=\"Image Redbull\">");
+              client.print("<img class=\"product_pict\" src=\"can.png\" alt=\"Image Canette\">");
             }
             else {
               client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
@@ -170,15 +170,15 @@ void loop() {
       else {
         if (command == "soggy") {
           if (seg == 1) {
-            client.print("<img class=\"product_pict\" src=\"coca.jpg\" alt=\"Image Coca\">");
+            client.print("<img class=\"product_pict\" src=\"soda.png\" alt=\"Image Soda\">");
           }
           else {
             if (seg == 2) {
-              client.print("<img class=\"product_pict\" src=\"pinte.jpg\" alt=\"Image Pinte\">");
+              client.print("<img class=\"product_pict\" src=\"pinte.png\" alt=\"Image Pinte\">");
             }
             else {
               if (seg == 3) {
-                client.print("<img class=\"product_pict\" src=\"saucisson.jpg\" alt=\"Image Saucisson\">");
+                client.print("<img class=\"product_pict\" src=\"saucisson.png\" alt=\"Image Saucisson\">");
               }
               else {
                 client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
