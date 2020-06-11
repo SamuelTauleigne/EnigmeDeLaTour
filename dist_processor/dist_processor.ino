@@ -132,15 +132,15 @@ void loop() {
     int seg = segment(buff);
     if (command == "king") {
       if (seg == 1) {
-        client.print("<img class=\"product_pict\" src=\"plate.png\" alt=\"Image Assiette\">");
+        client.print("<img class=\"product_pict\" src=\"fish.png\" alt=\"Image Assiette\">");
       }
       else {
         if (seg == 2) {
-          client.print("<img class=\"product_pict\" src=\"frites.png\" alt=\"Image Frites\">");
+          client.print("<img class=\"product_pict\" src=\"fast-food.png\" alt=\"Image Frites\">");
         }
         else {
           if (seg == 3) {
-            client.print("<img class=\"product_pict\" src=\"kebab.png\" alt=\"Image Kebab\">");
+            client.print("<img class=\"product_pict\" src=\"doner-kebab.png\" alt=\"Image Kebab\">");
           }
           else {
             client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
@@ -159,7 +159,7 @@ void loop() {
           }
           else {
             if (seg == 3) {
-              client.print("<img class=\"product_pict\" src=\"can.png\" alt=\"Image Canette\">");
+              client.print("<img class=\"product_pict\" src=\"apple.png\" alt=\"Image Pomme\">");
             }
             else {
               client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
@@ -174,11 +174,11 @@ void loop() {
           }
           else {
             if (seg == 2) {
-              client.print("<img class=\"product_pict\" src=\"pinte.png\" alt=\"Image Pinte\">");
+              client.print("<img class=\"product_pict\" src=\"beer.png\" alt=\"Image Pinte\">");
             }
             else {
               if (seg == 3) {
-                client.print("<img class=\"product_pict\" src=\"saucisson.png\" alt=\"Image Saucisson\">");
+                client.print("<img class=\"product_pict\" src=\"sausage.png\" alt=\"Image Saucisson\">");
               }
               else {
                 client.print("<h3>Personne n'est détecté devant ce capteur, veuillez vérifier votre position !</h3>");
