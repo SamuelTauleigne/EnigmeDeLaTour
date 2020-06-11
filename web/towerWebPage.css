@@ -55,6 +55,7 @@ ul li{
 #Supermarché{
 	background-color: #29639D;
 	border-color: #29639D;
+	font-family: 'Roboto', sans-serif;
 }
 
 #King{
@@ -95,19 +96,57 @@ ul li{
 	color: white;
 	width: 100%;
 	font-size: 20px;
-	
+	font-family: 'Roboto', sans-serif;
+	padding-bottom: 4px;
+}
+
+.add_button{
+	background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 input[type="button" i]:focus {
 	outline: none;
 }
 
-#doc{
-	position: fixed;
-	bottom: 3px;
-	left: 37%;
-	width: 25%;
-	border-color: red;
-	border-style: solid;
+input[type="add_button" i]:focus {
+	outline: none;
+}
+
+#additionnal_buttons{
 	text-align: center;
+	width: 100%;
+	margin-top: 10px;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 200px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  font-family: 'Roboto', sans-serif;
 }

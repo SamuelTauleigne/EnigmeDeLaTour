@@ -31,6 +31,20 @@
 				otherTab2.style.height = '30px';
 			}
 		}
+
+		
+		function help() {
+			modal = document.getElementById("modal_box");
+
+			modal.style.display = "block";
+		}
+
+		window.onclick = function(event) {
+			modal = document.getElementById("modal_box");
+  			if (event.target == modal) {
+   			 modal.style.display = "none";
+  			}
+  		}
 		function refresh() {
 			$('#super_pict').load('http://192.168.240.1/arduino/super');
 			$('#soggy_pict').load('http://192.168.240.133/arduino/soggy');
@@ -45,11 +59,11 @@
 		<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
 	</div>
 	<p id="introduction_text">
-		Bienvenue à l'énigme des capteurs !<br>
+		<b>Bienvenue à l'énigme des capteurs !</b><br>
 		Hier soir, Théo a acheté deux paquets de chips, un Maxi-Kebab et deux pintes !<br>
 		Cliquez sur le lieu devant lequel vous vous trouvez et placez-vous sur un prix pour faire apparaître l'article
-		correspondant.<br>
-		Combien Théo a-t-il dépensé dans sa soirée ? Bonne chance !
+		correspondant.<br> <br>
+		<b>Combien Théo a-t-il dépensé dans sa soirée ?</b><br> Bonne chance !
 	</p>
 	<div id="tabs">
 		<ul>
@@ -65,11 +79,37 @@
 		<span class="product_pict" id="super_pict">Aucune donnée reçue ...</span>
 	</div>
 	<div class="tab_content" id="tab_king" style="display:none;">
-		<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span>
+		<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span><br>
+		<img src="soda.jpg" class="product_pict">
 	</div>
 	<div class="tab_content" id="tab_soggy" style="display:none;">
 		<span class="product_pict" id="soggy_pict">Aucune donnée reçue ...</span>
 	</div>
+	<div class="modal" id="modal_box">
+		<div class="modal-content">
+			<p>Regardez bien autour de vous pour trouver les prix des articles !</p>
+			<button class="add_button" id="close_help">Compris</button>
+		</div>
+	</div>
+	<div id="additionnal_buttons">
+		<ul>
+			<li>
+				<button id="help_button" class="add_button" onclick="help()">Nous sommes bloqués !</button>
+			</li>
+			<li>
+				<button id="doc_button" class="add_button">En savoir plus sur l'énigme</button>
+			</li>
+		</ul>
+	</div>
+	<script>
+		var close_btn = document.getElementById("close_help");
+		console.log(close_btn);
+		close_btn.onclick = function (){
+			modal = document.getElementById("modal_box");
+
+			modal.style.display = "none";
+		} 
+	</script>
 </body>
 
 </html>
