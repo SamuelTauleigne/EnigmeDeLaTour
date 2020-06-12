@@ -10,7 +10,9 @@
 
 <body>
 	<script type="text/javascript" src="zepto.min.js"></script>
+	<!--Définition des fonctions utiles-->
 	<script type="text/javascript">
+		/*Fonction de gestion des affichages des onglets*/
 		function display(toDisplay, otherDiv1, otherDiv2, tab_displayed, otherTab1, otherTab2) {
 
 			divToDisplay = document.getElementById(toDisplay);
@@ -32,19 +34,22 @@
 			}
 		}
 
-		
+		/*Fonction d'affichage de la boite de dialogue d'aide*/
 		function help() {
 			modal = document.getElementById("modal_box");
 
 			modal.style.display = "block";
 		}
 
+		/*Gestion d'évenement afin de fermer la boîte de dialogue*/
 		window.onclick = function(event) {
 			modal = document.getElementById("modal_box");
   			if (event.target == modal) {
    			 modal.style.display = "none";
   			}
   		}
+
+  		/*Fonction de réactualisation des données des cartes pour affichage des images*/
 		function refresh() {
 			$('#super_pict').load('http://192.168.240.1/arduino/super');
 			$('#soggy_pict').load('http://192.168.240.133/arduino/soggy');
@@ -53,7 +58,7 @@
 		setInterval(() => refresh(), 500);
 	</script>
 
-
+	<!--Entête de la page-->
 	<div id="begin">
 		<h1 id="title">Énigme des capteurs</h1>
 		<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
@@ -65,6 +70,8 @@
 		correspondant.<br> <br>
 		<b>Combien Théo a-t-il dépensé dans sa soirée ?</b><br> Bonne chance !
 	</p>
+
+	<!--Onglets-->
 	<div id="tabs">
 		<ul>
 			<li><input type="button" class="button" id="Supermarché" value="Supermarché"
@@ -75,22 +82,27 @@
 					onclick="display('tab_soggy', 'tab_king', 'tab_supermarche', 'Soggy', 'Supermarché', 'King')"></li>
 		</ul>
 	</div>
+
+	<!--Contenus des onglets-->
 	<div class="tab_content" id="tab_supermarche" style="display:none;">
 		<span class="product_pict" id="super_pict">Aucune donnée reçue ...</span>
 	</div>
 	<div class="tab_content" id="tab_king" style="display:none;">
-		<!--<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span>--><br>
-		<img src="can.png" class="product_pict">
+		<span class="product_pict" id="king_pict">Aucune donnée reçue ...</span>
 	</div>
 	<div class="tab_content" id="tab_soggy" style="display:none;">
 		<span class="product_pict" id="soggy_pict">Aucune donnée reçue ...</span>
 	</div>
+
+	<!--Boîte de dialogue-->
 	<div class="modal" id="modal_box">
 		<div class="modal-content">
 			<p>Regardez bien autour de vous pour trouver les prix des articles !</p>
 			<button class="add_button" id="close_help">Compris</button>
 		</div>
 	</div>
+
+	<!--Boutons additionnels d'aide et de lien vers la page de documentation-->
 	<div id="additionnal_buttons">
 		<ul>
 			<li>
@@ -104,7 +116,9 @@
 			</li>
 		</ul>
 	</div>
+
 	<script>
+		/*Fonction de gestion de la fermeture de la boîte de dialogue*/
 		var close_btn = document.getElementById("close_help");
 		console.log(close_btn);
 		close_btn.onclick = function (){
