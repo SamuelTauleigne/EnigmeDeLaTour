@@ -4,14 +4,17 @@ body{
 
 #begin {
 	/*background-color: #0470EB;*/
-	background-color: #182949;
+	/*background-color: #182949;*/
+	/*background-color: #4c5356;*/
+	background-color: #b7c6cf;
+
 	text-align: center;
 	width: 100%;
 }
 
 
 #title {
-	color: #FFFFFF;
+	color: black;
 	font-family: 'Roboto', sans-serif;
 	padding-top: 7px;
 }
@@ -55,7 +58,6 @@ ul li{
 #Supermarché{
 	background-color: #29639D;
 	border-color: #29639D;
-	font-family: 'Roboto', sans-serif;
 }
 
 #King{
@@ -72,11 +74,12 @@ ul li{
 	text-align: center;
 	border-style: solid;
 	border-width: 10px;
+	border-radius: 5px;
 }
 
 .product_pict{
-	width : 50%;
-	height: 30%;
+	width : 45%;
+	height: 45%;
 }
 
 #tab_supermarche{
@@ -149,4 +152,12 @@ input[type="add_button" i]:focus {
   border: 1px solid #888;
   width: 60%;
   font-family: 'Roboto', sans-serif;
+}
+
+#main_text{
+	font-family: 'Roboto', sans-serif;
+}
+
+#doc_title{
+	font-family: 'Roboto', sans-serif;
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<link rel="stylesheet" media="screen" type="text/css" href="towerWebPage.css">
+			<link rel="icon" href="LOGO.png">
+			<title>Les dessous de l'énigme !</title>
+		</head>
+		<body>
+			<div id="begin">
+				<h1 id="title">Énigme des capteurs</h1>
+				<img class="begin_pict" src="LOGO.png" alt="Logo of Telecom Saint-Etienne Escape Game">
+			</div>
+			<div id="doc_title">
+				<h2>Les dessous de l'énigme !</h2>
+			</div>
+			<div id="introduction_text">
+				<p><b>Félicitations pour avoir réussi l'énigme des capteurs !</b><br> Si vous ne l'avez pas encore finie, revenez plus tard ! L'heure tourne pour le WEI !<br><br>
+				Cette page a pour but de satisfaire votre curiosité quant au fonctionnement de cette énigme. Il s'agit peut-être du genre de montage que vous serez capable de réaliser dès la fin de votre 1ère année au sein de Télécom Saint-Étienne !</p>
+			</div>
+			<div id="main_text">
+				<h3>Les capteurs</h3>
+				<p>Commençons par le début de la chaîne : les capteurs. Les modèles utilisés dans cette énigme sont <b>des capteurs de distance utilisant des ultrasons.</b> Grâce à eux, on peut évaluer la position du joueur qui est en face de lui en mesurant le temps écoulé entre l'envoi des sons et la réception de l'écho généré par la présence du joueur. Cette information est ensuite transmise par voie filaire aux cartes de programation auxquelles les capteurs sont rattachés.</p>
+				<br>
+				<h3>Les cartes</h3>
+				<p>Les cartes utilisées dans cette énigme sont <b>des cartes Arduino Yun</b>. Ces cartes contiennent des microprocesseurs permettant d'exécuter de petits programmes préalablement chargés dans l'espace de stockage de la carte.<br>
+					Le programme exécuté ici permet donc de récupérer la donnée transmise par le capteur et d'évaluer la position du joueur par rapport à l'un des trois repères situés au sol. Cette position est ensuite stocké dans un emplacement mémoire facilement accessible de la carte. Cette information devra ensuite être récupérée par la page Web que vous avez consulté lors de l'énigme.<br>
+				Une particularité des cartes Arduino Yun est qu'elles possèdent un module WiFi intégré leur permettant de générer leur propre réseau WiFi. Cette spécificité sera exploitée pour mettre en relation les 3 cartes associées à chaque lieu.</p>
+				<h3>Le réseau local</h3>
+				<p>Afin que les cartes puissent communiquer entre elles, elles sont toutes connectées à un même réseau local généré par une des cartes. Cette carte principale recueille les données permettant de savoir quels produits afficher pour chaque onglet de la page Web. Cette page Web est stockée en interne sur la carte principale, ainsi que les fichiers nécessaires à son affichage.</p>
+				<h3>La page Web</h3>
+				<p>La page à travers laquelle vous avez pu résoudre cette énigme est une combinaison utilisant une page HTML couplée avec une feuille de style en CSS. La gestion dynamique du changement des images se fait par le biais de fonctions écrites en JavaScript.</p>
+			</div>
+			<div id="additionnal_buttons">
+				<form action="index.html">
+				<button type="submit" id="doc_button" class="add_button">
+         			Retour sur la page de l'énigme</button>
+         		</form>
+			</div>
+		</body>
+	</html>
+	
