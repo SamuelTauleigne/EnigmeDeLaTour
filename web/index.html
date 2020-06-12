@@ -9,6 +9,7 @@
 </head>
 
 <body>
+	<!-- Zepto JS : Librairie JS minimaliste JQuery compatible-->
 	<script type="text/javascript" src="zepto.min.js"></script>
 	<!--Définition des fonctions utiles-->
 	<script type="text/javascript">
@@ -55,6 +56,8 @@
 			$('#soggy_pict').load('http://192.168.240.133/arduino/soggy');
 			$('#king_pict').load('http://192.168.240.110/arduino/king');
 		}
+
+		/* Actualisation des données toutes les 500 ms */
 		setInterval(() => refresh(), 500);
 	</script>
 
