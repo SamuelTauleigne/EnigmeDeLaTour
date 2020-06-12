@@ -2,16 +2,13 @@ body{
 	background-color: #e3e9ec;
 }
 
+/*Partie introduction*/
 #begin {
-	/*background-color: #0470EB;*/
-	/*background-color: #182949;*/
-	/*background-color: #4c5356;*/
 	background-color: #b7c6cf;
 
 	text-align: center;
 	width: 100%;
 }
-
 
 #title {
 	color: black;
@@ -31,6 +28,7 @@ body{
 	font-family: 'Roboto', sans-serif;
 }
 
+/*Partie onglets*/
 #tabs{
 	width: 100%;
 	text-align: center;
@@ -46,12 +44,10 @@ ul{
 
 ul li{
     display: inline-block;
-    /*border-style: solid;*/
     width: 30%;
     border-radius: 3px;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    /*margin-right: 50px;*/
 }
 
 
@@ -95,6 +91,7 @@ ul li{
 	border-color: #80B914;
 }
 
+/*Partie boutons de bas de page*/
 .button{
 	color: white;
 	width: 100%;
@@ -129,7 +126,6 @@ input[type="add_button" i]:focus {
 	margin-top: 10px;
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -154,6 +150,7 @@ input[type="add_button" i]:focus {
   font-family: 'Roboto', sans-serif;
 }
 
+/*Partie spécifique à la page de documentation*/
 #main_text{
 	font-family: 'Roboto', sans-serif;
 }
